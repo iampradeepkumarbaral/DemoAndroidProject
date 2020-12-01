@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_kyc"
+            android:checkable="false"
+            android:icon="@drawable/ic_verification"
+            android:title="@string/kyc_verification" />
+        <item
+            android:id="@+id/nav_friends_leaderboard"
+            android:checkable="false"
+            android:icon="@drawable/ic_friends"
+            android:title="@string/friends_leader_board" />
+
+        <item
+            android:id="@+id/nav_certificates"
+            android:checkable="false"
+            android:icon="@drawable/ic_certificate_icon"
+            android:title="@string/certificates" />
+        <item
+            android:id="@+id/nav_payment_info"
+            android:checkable="false"
+            android:icon="@drawable/ic_payment_info"
+            android:title="@string/payment_info" />
+
+        <item
+            android:id="@+id/nav_grade"
+            android:checkable="false"
+            android:icon="@drawable/ic_change_grade"
+            android:title="@string/change_grade" />
+        <item
+            android:id="@+id/nav_language"
+            android:checkable="false"
+            android:icon="@drawable/ic_language"
+            android:title="@string/change_language" />
+
+        <item
+            android:id="@+id/nav_privacy"
+            android:checkable="false"
+            android:icon="@drawable/ic_policy"
+            android:title="@string/privacy_policy" />
+
+        <item
+            android:id="@+id/nav_logout"
+            android:checkable="false"
+            android:icon="@drawable/ic_logout"
+            android:title="@string/logout" />
+    </group>
+</menu>

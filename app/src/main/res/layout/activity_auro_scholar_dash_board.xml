@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.demo.application.home.presentation.viewmodel.AuroScholarDashBoardViewModel" />
+    </data>
+    <!--auro_container-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:context=".home.presentation.view.activity.DashBoardActivity"
+        tools:openDrawer="start">
+
+        <include
+            android:id="@+id/naviagtion_content"
+            layout="@layout/navigation_home_layout_app"
+
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

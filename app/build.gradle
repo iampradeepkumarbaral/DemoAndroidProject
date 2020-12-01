@@ -1,0 +1,127 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: 'com.google.firebase.firebase-perf'
+apply from: "$rootDir/dependencies.gradle"
+
+android {
+    compileSdkVersion COMPILE_SDK_VERSION
+    defaultConfig {
+        applicationId "com.demo.application"
+        minSdkVersion MIN_SDK_VERSION
+        targetSdkVersion TARGET_SDK_VERSION
+        versionCode 13
+        versionName "0.0.13"
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        buildConfigField 'int', 'DEFAULT_ANIMATION_DURATION', '750'
+    }
+
+
+    bundle {
+        language {
+            // Specifies that the app bundle should not support
+            // configuration APKs for language resources. These
+            // resources are instead packaged with each base and
+            // dynamic feature APK.
+            enableSplit = false
+        }
+    }
+    /* buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }*/
+    buildTypes {
+        debug {
+
+            buildConfigField "String", "BASE_URL", "\"https://auroscholar.com/api/\""
+            manifestPlaceholders = [crashlyticsCollectionEnabled:"false"]
+            firebaseCrashlytics {
+                nativeSymbolUploadEnabled true
+                strippedNativeLibsDir 'path/to/stripped/parent/dir'
+                unstrippedNativeLibsDir 'path/to/unstripped/parent/dir'
+            }
+
+        }
+
+        release {
+
+            buildConfigField "String", "BASE_URL", "\"https://auroscholar.com/api/\""
+            manifestPlaceholders = [crashlyticsCollectionEnabled:"true"]
+            firebaseCrashlytics {
+                nativeSymbolUploadEnabled true
+                strippedNativeLibsDir 'path/to/stripped/parent/dir'
+                unstrippedNativeLibsDir 'path/to/unstripped/parent/dir'
+            }
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions {
+        abortOnError false
+    }
+    android {
+        compileOptions {
+            sourceCompatibility = '1.8'
+            targetCompatibility = '1.8'
+        }
+        dataBinding {
+            enabled = true
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    // DEVELOPMENT Dependencies
+    implementation supportDependencies.values()
+    // NETWORK Dependencies
+    implementation networkDependencies.values()
+    // GOOGLE Dependencies
+    implementation googleDependencies.values()
+    implementation googleDependencies.dagger
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+
+    implementation 'androidx.navigation:navigation-runtime:2.3.0'
+    implementation 'androidx.navigation:navigation-ui:2.3.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.navigation:navigation-fragment:2.3.0'
+    implementation 'me.toptas.fancyshowcase:fancyshowcaseview:1.3.0'
+    implementation 'com.robinhood.ticker:ticker:2.0.2'
+    annotationProcessor googleDependencies.daggerCompiler
+    //Rx Dependencies
+    implementation rxDependencies.rx_android
+    // DATABASE
+    implementation DatabaseDependencies.roomRuntime
+    annotationProcessor DatabaseDependencies.roomCompiler
+    implementation DatabaseDependencies.lifecyleRuntime
+    implementation DatabaseDependencies.lifecyleExtension
+    implementation TruecallerDependencies.truecaller
+    implementation FacebookDependencies.facebook
+    implementation OtpDependencies.otpdependencies
+    // FIREBASE
+    implementation FirebaseDependencies.values()
+    // OTHER Dependencies
+    implementation otherDependencies.glide
+    annotationProcessor otherDependencies.glideCompiler
+    implementation otherDependencies.shimmer
+    // TESTING Dependency
+    implementation TestingDependencies.values()
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    implementation 'com.google.android.gms:play-services-vision:15.0.2'
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.3'
+    implementation CrashLyticsDependencies.crashlytics
+
+}
+apply plugin: 'com.google.gms.google-services'
